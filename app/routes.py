@@ -29,7 +29,7 @@ def login():
             return redirect(url_for('login'))
         
         login_user(user, remember=form.remember.data)
-        return redirect(url_for('index'))
+        return redirect(url_for('admin'))
 
     return render_template('login.html', title='Sign in', form=form)
 
@@ -39,3 +39,10 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+# ADMIN PANEL
+@app.route('/admin')
+@login_required
+def admin():
+    return render_template('admin.html', title="Admin Panel")

@@ -37,6 +37,7 @@ class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(64), unique=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    desc = db.Column(db.String(1024))
     album_id = db.Column(db.Integer, db.ForeignKey('album.id'))
 
     def __repr__(self):
